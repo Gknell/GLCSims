@@ -1,0 +1,41 @@
+# https://git-scm.com/docs/gitignore
+# https://help.github.com/articles/ignoring-files
+# Example.gitignore files : https://github.com/github/gitignore
+_notes/
+/bower_components/
+/node_modules/
+/wp-content/themes/gk-portfolio/
+/wp-content/themes/GlobalCatDay/
+/wp-content/themes/gulp-dev/
+/wp-content/themes/saimhe/
+/wp-content/themes/sassdev/
+/wp-content/themes/store this/
+/wp-content/upgrade/
+/wp-content/uploads/
+/wp-content/themes/storefront/
+/wp-content/themes/twentyfifteen/
+/wp-content/themes/twentyseventeen/
+/wp-content/themes/twentysixteen/
+/wp-content/themes/index.php
+/wp-content/plugins/
+/wp-content/languages/
+/wp-includes/
+/wp-content/index.php
+/xmlrpc.php
+/wp-trackback.php
+/wp-signup.php
+/wp-settings.php
+/wp-mail.php
+/wp-login.php
+/wp-load.php
+/wp-links-opml.php
+/wp-cron.php
+/wp-config.php
+/wp-comments-post.php
+/wp-blog-header.php
+/wp-activate.php
+/Untitled-3.html
+/index.php
+/clip_image003.jpg
+/clip_image002.jpg
+/wp-admin/
