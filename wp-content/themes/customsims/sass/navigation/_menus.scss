@@ -3,12 +3,15 @@
 	display: block;
 	float: left;
 	width: 100%;
+	background-color: $color__background-navbar;
+
 
 	ul {
 		display: none;
 		list-style: none;
 		margin: 0;
 		padding-left: 0;
+		
 
 		ul {
 			box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
@@ -32,10 +35,15 @@
 
 			a {
 				width: 200px;
+				color: $color__link;
+				padding: .25rem;
 			}
 
 			:hover > a,
 			.focus > a {
+				background: $color__accent1;
+				color: white;
+				
 			}
 
 			a:hover,
@@ -61,6 +69,7 @@
 	a {
 		display: block;
 		text-decoration: none;
+		color: white;
 	}
 
 	.current_page_item > a,
@@ -81,8 +90,21 @@
 		display: none;
 	}
 	.main-navigation ul {
-		display: block;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		padding: .5rem 0;
+		width: 90%;
+		margin: 0 auto;
+		}
+		
+	ul.sub-menu {
+		flex-direction: column;
+		background-color: white;
+		width: auto;
+		
 	}
+
 }
 
 .comment-navigation,

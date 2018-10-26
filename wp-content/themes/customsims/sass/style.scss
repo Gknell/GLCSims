@@ -1,6 +1,6 @@
 /*!
 Theme Name: Custom Sims
-Theme URI: http://underscores.me/
+Theme URI: http://github.com/saimhe/customsims/
 Author: Gretchen Knell
 Author URI: https://ggk.saimhe.net
 Description: A custom theme for Sims custom constent and etc.
@@ -8,7 +8,7 @@ Version: 1.0.0
 License: GNU General Public License v2 or later
 License URI: LICENSE
 Text Domain: customsims
-Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
+Tags: 
 
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
@@ -85,15 +85,16 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 --------------------------------------------------------------*/
 @import "modules/clearings";
 
-/*--------------------------------------------------------------
-# Widgets
---------------------------------------------------------------*/
-@import "site/secondary/widgets";
 
 /*--------------------------------------------------------------
 # Content
 --------------------------------------------------------------*/
 @import "site/site";
+
+/*--------------------------------------------------------------
+# Widgets
+--------------------------------------------------------------*/
+@import "site/secondary/widgets";
 
 /*--------------------------------------------------------------
 # Infinite scroll

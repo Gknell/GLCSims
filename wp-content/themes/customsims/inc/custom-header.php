@@ -5,6 +5,14 @@
  * You can add an optional custom header image to header.php like so ...
  *
 	<?php the_header_image_tag(); ?>
+	
+	<?php if ( get_header_image() ) : ?>
+    <div id="site-header">
+        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+            <img src="<?php header_image(); ?>" width="<?php echo absint( get_custom_header()->width ); ?>" height="<?php echo absint( get_custom_header()->height ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>">
+        </a>
+    </div>
+<?php endif; ?>
  *
  * @link https://developer.wordpress.org/themes/functionality/custom-headers/
  *
@@ -20,8 +28,8 @@ function customsims_custom_header_setup() {
 	add_theme_support( 'custom-header', apply_filters( 'customsims_custom_header_args', array(
 		'default-image'          => '',
 		'default-text-color'     => '000000',
-		'width'                  => 1000,
-		'height'                 => 250,
+		'width'                  => 2000,
+		'height'                 => 650,
 		'flex-height'            => true,
 		'wp-head-callback'       => 'customsims_header_style',
 	) ) );

@@ -36,7 +36,7 @@ if ( ! function_exists( 'customsims_setup' ) ) :
 		add_theme_support( 'title-tag' );
 
 		/*
-		 * Enable support for Post Thumbnails on posts and pages.
+		 * Enable support for Post Thumbnails on posts and pages. This is the featured image support.
 		 *
 		 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 		 */
@@ -59,11 +59,19 @@ if ( ! function_exists( 'customsims_setup' ) ) :
 			'caption',
 		) );
 
-		// Set up the WordPress core custom background feature.
+		// Set up the WordPress core custom background feature. Works with customizer -- allows admin to add these
 		add_theme_support( 'custom-background', apply_filters( 'customsims_custom_background_args', array(
 			'default-color' => 'ffffff',
 			'default-image' => '',
 		) ) );
+		
+		// Add theme support for custom logo
+		add_theme_support( 'custom-logo', array(
+			'width' => 144,
+			'height' => 144,
+			'flex-width' => true,
+		) );
+
 
 		// Add theme support for selective refresh for widgets.
 		add_theme_support( 'customize-selective-refresh-widgets' );
@@ -84,6 +92,64 @@ endif;
 add_action( 'after_setup_theme', 'customsims_setup' );
 
 /**
+ * Register custom fonts.
+ */
+function customsims_fonts_url() {
+	$fonts_url = '';
+
+	/*
+	 * Translators: If there are characters in your language that are not
+	 * supported by Cinzel and Open Sans, translate this to 'off'. Do not translate
+	 * into your own language.
+	 * https://fonts.googleapis.com/css?family=Cinzel:400,700|Open+Sans:400,400i,700
+	 */
+	$cinzel = _x( 'on', 'Cinzel font: on or off', 'customsims' );
+	$open_sans = _x( 'on', 'Open Sans font: on or off', 'customsims' );
+	
+	$font_families = array();
+	
+	if ( 'off' !== $cinzel) {
+		$font_families[] = 'Cinzel:400,700';
+	}
+
+	if ( 'off' !== $open_sans) {
+		$font_families[] = 'Open+Sans:400,400i,700';
+	}
+	
+	if ( in_array ('on', array($cinzel, $open_sans) ) ) {
+		
+		$query_args = array(
+			'family' => urlencode( implode( '|', $font_families ) ),
+			'subset' => urlencode( 'latin,latin-ext' ),
+		);
+
+		$fonts_url = add_query_arg( $query_args, 'https://fonts.googleapis.com/css' );
+	}
+
+	return esc_url_raw( $fonts_url );
+}
+
+/**
+ * Add preconnect for Google Fonts.
+ *
+ *
+ * @param array  $urls           URLs to print for resource hints.
+ * @param string $relation_type  The relation type the URLs are printed.
+ * @return array $urls           URLs to print for resource hints.
+ */
+function customsims_resource_hints( $urls, $relation_type ) {
+	if ( wp_style_is( 'customsims-fonts', 'queue' ) && 'preconnect' === $relation_type ) {
+		$urls[] = array(
+			'href' => 'https://fonts.gstatic.com',
+			'crossorigin',
+		);
+	}
+
+	return $urls;
+}
+add_filter( 'wp_resource_hints', 'customsims_resource_hints', 10, 2 );
+
+/**
  * Set the content width in pixels, based on the theme's design and stylesheet.
  *
  * Priority 0 to make it available to lower priority callbacks.
@@ -91,7 +157,7 @@ add_action( 'after_setup_theme', 'customsims_setup' );
  * @global int $content_width
  */
 function customsims_content_width() {
-	// This variable is intended to be overruled from themes.
+	// This variable is intended to be overruled from themes. Max width for things like YouTube videos.
 	// Open WPCS issue: {@link https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/issues/1043}.
 	// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 	$GLOBALS['content_width'] = apply_filters( 'customsims_content_width', 640 );
@@ -120,6 +186,10 @@ add_action( 'widgets_init', 'customsims_widgets_init' );
  * Enqueue scripts and styles.
  */
 function customsims_scripts() {
+	
+	//Enqueue Google Fonts Cinzel + Open Sans https://fonts.googleapis.com/css?family=Cinzel:400,700|Open+Sans:400,400i,700'
+	wp_enqueue_style( 'customsims-fonts', customsims_fonts_url() );
+	
 	wp_enqueue_style( 'customsims-style', get_stylesheet_uri() );
 
 	wp_enqueue_script( 'customsims-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
