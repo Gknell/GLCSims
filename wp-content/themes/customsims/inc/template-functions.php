@@ -15,10 +15,11 @@ function customsims_body_classes( $classes ) {
 	// Adds a class of hfeed to non-singular pages.
 	if ( ! is_singular() ) {
 		$classes[] = 'hfeed';
+		$classes[] = 'archive-view';
 	}
 
-	// Adds a class of no-sidebar when there is no sidebar present.
-	if ( ! is_active_sidebar( 'sidebar-1' ) ) {
+	// Adds a class of no-sidebar to pages without sidebar.
+	if ( 'post' == get_post_type() ) {
 		$classes[] = 'no-sidebar';
 	} else {
 		$classes[] = 'has-sidebar';

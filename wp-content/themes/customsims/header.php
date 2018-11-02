@@ -24,16 +24,22 @@
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'customsims' ); ?></a>
 	<header id="masthead" class="site-header" <?php if ( get_header_image() && is_front_page() ) : ?> style="background-image:url('<?php header_image(); ?>'); "<?php endif; ?> >
-		<div class="site-branding <?php if (is_front_page() ) : ?> home-banner<?php endif; ?>">
+		<div class="site-branding <?php if (is_front_page() ) : ?> home-banner<?php else :?>not-home<?php endif; ?>">
 			<?php
 			if ( is_front_page() && is_home() ) :
 				?>
+				<div class="site-logo">
 				<?php the_custom_logo(); ?>
+				</div>
+			<div class="site-title-block">
 				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 				<?php
 			else :
 				?>
+				<div class="site-logo">
 				<?php the_custom_logo(); ?>
+				</div>
+				<div class="site-title-block">
 				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
 				<?php
 			endif;
@@ -42,6 +48,7 @@
 				?>
 				<p class="site-description"><?php echo $customsims_description; /* WPCS: xss ok. */ ?></p>
 			<?php endif; ?>
+					</div>
 		</div><!-- .site-branding -->
 
 		<nav id="site-navigation" class="main-navigation">

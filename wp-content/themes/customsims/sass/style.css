@@ -626,16 +626,16 @@ a {
 .main-navigation.toggled ul {
   display: block; }
 
-@media screen and (min-width: 37.5em) {
+@media screen and (min-width: 900px) {
   .menu-toggle {
     display: none; }
 
   .main-navigation ul {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    padding: .5rem 0;
-    width: 90%;
+    justify-content: space-around;
+    padding: .5em 0;
+    width: 1080px;
     margin: 0 auto; }
 
   ul.sub-menu {
@@ -749,13 +749,46 @@ a {
 ## Global
 --------------------------------------------------------------*/
 .site-content {
-  padding: 1em; }
+  padding: 0 1em;
+  max-width: 1080px;
+  margin: 0 auto; }
   @media screen and (min-width: 600px) {
     .site-content {
-      padding: 2em; } }
+      padding: 0 1em; } }
   @media screen and (min-width: 900px) {
     .site-content {
-      padding: 3em; } }
+      padding: 0 1em; } }
+
+@media screen and (min-width: 900px) {
+  .singular.has-sidebar .hentry {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-between; }
+    .singular.has-sidebar .hentry .entry-header {
+      width: 100%;
+      flex: 1 0 100%; }
+    .singular.has-sidebar .hentry .post-content {
+      width: 60%; }
+    .singular.has-sidebar .hentry .widget-area {
+      width: 30%; } }
+@media screen and (min-width: 900px) {
+  .singular.no-sidebar .post-content__wrap {
+    display: flex;
+    justify-content: space-between; }
+  .singular.no-sidebar .entry-meta {
+    width: 20%; }
+  .singular.no-sidebar .post-content__body {
+    width: 70%; } }
+/*--------------------------------------------------------------
+## Archive
+--------------------------------------------------------------*/
+/* Scss Document */
+.archive-view {
+  background-color: #e6e6e6; }
+  .archive-view .post {
+    background-color: white; }
+  .archive-view .post__content {
+    padding: 2em 2em 3em; }
 
 /*--------------------------------------------------------------
 ## Header
@@ -768,12 +801,15 @@ a {
 .site-branding {
   min-height: 250px;
   text-align: center; }
+  .site-branding.not-home {
+    background: white; }
 
 .home-banner {
   min-height: 45vh;
   overflow: hidden;
   display: flex;
-  flex-flow: column wrap; }
+  flex-flow: column wrap;
+  background: rgba(255, 255, 255, 0.7); }
   .home-banner .custom-logo {
     height: 288px;
     width: auto; }
@@ -830,14 +866,205 @@ a {
   clear: both;
   margin: 0 0 1.5em; }
 
+/* Post Meta display on Posts with No Sidebar */
+.no-sidebar .entry-meta {
+  margin-top: 1.5em; }
+@media screen and (min-width: 900px) {
+  .no-sidebar .post-content__wrap .entry-meta {
+    margin-top: 2.25em;
+    font-size: 80%; }
+    .no-sidebar .post-content__wrap .entry-meta a {
+      font-size: 110%;
+      display: block;
+      border-bottom: 3px solid black;
+      margin-bottom: 1em;
+      text-decoration: none; }
+      .no-sidebar .post-content__wrap .entry-meta a:hover, .no-sidebar .post-content__wrap .entry-meta a:focus {
+        border-bottom-color: #7cc243; }
+    .no-sidebar .post-content__wrap .entry-meta .tags-links a {
+      display: inline;
+      border-bottom: 0; }
+    .no-sidebar .post-content__wrap .entry-meta .tags-links:after {
+      content: '';
+      display: block;
+      border-bottom: 3px solid black; } }
+
+/* Full Bleed Featured Images */
+.full-bleed {
+  width: 100vw;
+  max-height: 500px;
+  margin-top: 1em;
+  margin-left: -1em;
+  border-top: 1px solid #b3b3b3;
+  border-bottom: 1px solid #b3b3b3;
+  background-color: #e6e6e6;
+  overflow: hidden; }
+  @media screen and (min-width: 600px) {
+    .full-bleed {
+      margin-left: -1em; } }
+  @media screen and (min-width: 900px) {
+    .full-bleed {
+      margin-right: -1em;
+      margin-top: 1.5em; } }
+  @media screen and (min-width: 1080px) {
+    .full-bleed {
+      margin-right: calc( (-100vw + 1080px)/2 - 1em);
+      margin-left: calc( (-100vw + 1080px)/2 - 1em); } }
+  .full-bleed img {
+    display: block;
+    margin: 0 auto; }
+
 /*--------------------------------------------------------------
 ## Comments
 --------------------------------------------------------------*/
+.comments-title {
+  margin-bottom: 2em;
+  font-size: 2.5em;
+  font-weight: 900; }
+
 .comment-content a {
   word-wrap: break-word; }
+.comment-content p {
+  margin-top: .25em;
+  margin-bottom: .35em; }
 
-.bypostauthor {
-  display: block; }
+ol.comment-list {
+  list-style: none; }
+
+.comment-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none; }
+  .comment-list ol {
+    list-style-type: none; }
+  .comment-list .comment-body {
+    position: relative;
+    margin-left: 90px;
+    border-bottom: 1px solid #c3c3c3;
+    margin-bottom: 3em; }
+    .comment-list .comment-body .comment-meta {
+      position: relative;
+      margin-left: 90px;
+      font-size: 80%; }
+
+.comment-meta a,
+.comment-form a {
+  text-decoration: none;
+  border: none; }
+  .comment-meta a:hover, .comment-meta a:focus,
+  .comment-form a:hover,
+  .comment-form a:focus {
+    text-decoration: underline; }
+
+.comment .avatar {
+  position: absolute;
+  top: -5px;
+  left: -72px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50px; }
+
+.children {
+  margin-left: .5em;
+  padding-left: 0; }
+  @media screen and (min-width: 900px) {
+    .children {
+      margin-left: 0; } }
+
+@media screen and (min-width: 900px) {
+  .no-sidebar .children {
+    margin-left: 1em; }
+    .no-sidebar .children .comment-meta {
+      margin-left: 80px;
+      font-size: 90%; }
+    .no-sidebar .children .comment .avatar {
+      top: -7px;
+      left: -80px;
+      width: 60px;
+      height: 60px; }
+    .no-sidebar .children .comment-content {
+      margin-left: 80px; } }
+@media screen and (min-width: 1080px) {
+  .no-sidebar .children {
+    margin-left: 1em; }
+  .no-sidebar .comment-meta {
+    margin-left: 90px; }
+  .no-sidebar .comment .avatar {
+    top: -8px;
+    left: -90px;
+    width: 70px;
+    height: 70px; }
+  .no-sidebar .comment-content {
+    margin-left: 90px; } }
+
+.says {
+  font-size: 80%; }
+
+.reply {
+  margin-bottom: 1.5em;
+  text-align: right; }
+  .reply a {
+    display: inline-block;
+    padding: .5em 1.4em;
+    font-size: 85%;
+    color: #000;
+    line-height: 1.3em;
+    text-decoration: none;
+    border: 1px solid #c3c3c3; }
+    .reply a:hover, .reply a:focus {
+      color: #fff;
+      background: #7cc243;
+      border-color: #005c31; }
+
+.bypostauthor .avatar {
+  box-sizing: content-box;
+  border: 5px solid #00a04b;
+  border-radius: 50%; }
+
+/* Comment Form */
+.comment-reply-title {
+  margin-bottom: 1em; }
+
+.comment-list .comment-reply-title {
+  text-align: left; }
+
+.comment-form {
+  line-height: 1.3em; }
+  .comment-form a {
+    font-weight: 500; }
+  .comment-form .form-submit {
+    text-align: right; }
+  .comment-form .form-submit input {
+    padding: .5em 1.4em;
+    font-size: 85%;
+    color: #000;
+    line-height: 1.3em;
+    text-decoration: none;
+    border: 1px solid #c3c3c3; }
+    .comment-form .form-submit input:hover, .comment-form .form-submit input:focus {
+      color: #fff;
+      background: #7cc243;
+      border-color: #005c31; }
+  .comment-form label {
+    width: 33%;
+    display: block;
+    font-style: italic;
+    padding-bottom: .4em; }
+  .comment-form .required {
+    color: #D54E21; }
+
+/*--------------------------------------------------------------
+## Footer
+--------------------------------------------------------------*/
+.site-footer {
+  position: relative;
+  font-family: "Open Sans", sans-serif;
+  color: white;
+  background-color: #363739;
+  padding: 1em; }
+  .site-footer .site-info {
+    max-width: 1080px;
+    margin: 0 auto; }
 
 /*--------------------------------------------------------------
 # Widgets
@@ -847,6 +1074,24 @@ a {
   /* Make sure select elements fit in widgets. */ }
   .widget select {
     max-width: 100%; }
+  .widget .widget-title {
+    font-size: 1.5em; }
+
+/*SEARCH WIDGET */
+.widget_search {
+  padding-left: 5%;
+  padding-bottom: 5%;
+  margin-top: 1em;
+  border: 1px solid #eee; }
+  .widget_search .search-form {
+    display: flex;
+    width: 90%;
+    justify-content: space-around; }
+    .widget_search .search-form label .search-field {
+      width: 100%; }
+    .widget_search .search-form .search-submit {
+      background-color: red;
+      color: white; }
 
 /*--------------------------------------------------------------
 # Infinite scroll

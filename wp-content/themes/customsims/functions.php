@@ -34,6 +34,7 @@ if ( ! function_exists( 'customsims_setup' ) ) :
 		 * provide it for us.
 		 */
 		add_theme_support( 'title-tag' );
+		
 
 		/*
 		 * Enable support for Post Thumbnails on posts and pages. This is the featured image support.
@@ -41,6 +42,8 @@ if ( ! function_exists( 'customsims_setup' ) ) :
 		 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 		 */
 		add_theme_support( 'post-thumbnails' );
+		add_image_size( 'customsims-full-bleed', 2000, 500, true);
+		
 
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(

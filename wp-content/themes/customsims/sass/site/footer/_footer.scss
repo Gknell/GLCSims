@@ -1,0 +1,13 @@
+.site-footer {
+	position: relative;
+	font-family: $font__main;
+	color: white;
+	background-color: $color__background-navbar;
+	padding:  1em;
+	
+	.site-info{
+		max-width: $size__max-width;
+		margin: 0 auto;
+	}
+
+}

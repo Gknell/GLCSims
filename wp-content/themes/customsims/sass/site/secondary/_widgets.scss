@@ -5,4 +5,38 @@
 	select {
 		max-width: 100%;
 	}
+	
+	.widget-title {
+		font-size: 1.5em;
+	}
+
+	
 }
+	
+	/*SEARCH WIDGET */
+	.widget_search {
+		padding-left: 5%;
+		padding-bottom: 5%;
+		margin-top: 1em;
+		border: 1px solid #eee;
+		
+		.search-form {
+			display: flex;
+			width: 90%;
+			justify-content: space-around;
+			
+			label {
+				.search-field { 
+					width: 100%;
+				}
+			}
+			.search-submit {
+					background-color: red;
+					color: white;
+					//width: 100%;
+					
+					
+			}
+		}
+			
+	}
